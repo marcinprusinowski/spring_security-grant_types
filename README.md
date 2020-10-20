@@ -152,3 +152,4 @@ You can also start real quick with docker by using this command
 Few hints:
 1. Please, review code before you hit any endpoint
 2. Using Authorization Code grant type the redirect endpoint is set to http://localhost:8081/auth/token
+3. Basic user credentials are user1:password1
