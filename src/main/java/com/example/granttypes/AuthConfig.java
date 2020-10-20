@@ -26,7 +26,6 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("client1")
-                .secret("secret1")
                 .scopes("read")
                 .authorizedGrantTypes("password" ,"refresh_token")
              .and()
@@ -46,7 +45,9 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()");
+        security.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()")
+                .allowFormAuthenticationForClients();
         super.configure(security);
     }
 
